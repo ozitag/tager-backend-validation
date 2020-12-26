@@ -1,0 +1,20 @@
+{
+  "name": "ozitag/tager-backend-validation",
+  "description": "Tager Backend Validation",
+  "license": "MIT",
+  "homepage": "https://github.com/ozitag/tager-backend-validation",
+  "authors": [
+    {
+      "name": "Vital Ozierski <v.ozierski@ozitag.com>",
+      "email": "v.ozierski@ozitag.com",
+      "homepage": "https://ozitag.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "OZiTAG\\Tager\\Backend\\Validation\\": "src"
+    }
+  }
+}
