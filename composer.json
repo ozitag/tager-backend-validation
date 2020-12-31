@@ -11,7 +11,10 @@
       "role": "Developer"
     }
   ],
-  "require": {},
+  "require": {
+      "php": "^8.0",
+      "ozitag/tager-backend-core": "^1"
+  },
   "autoload": {
     "psr-4": {
       "OZiTAG\\Tager\\Backend\\Validation\\": "src"
