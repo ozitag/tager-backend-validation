@@ -2,7 +2,7 @@
 
 return [
     'codePrefix' => 'VALIDATION',
-    'multipleErrors' => true,
+    'multipleErrors' => false,
     'errorFormat' => [
         'code' => '#code',
         'message' => '#message',
