@@ -6,6 +6,5 @@ return [
     'errorFormat' => [
         'code' => '#code',
         'message' => '#message',
-        'fieldName' => '#fieldName',
     ],
 ];
