@@ -67,7 +67,7 @@ return [
     'max'                  => [
         'numeric' => 'MAX_NUMERIC',
         'file'    => 'MAX_FILE_SIZE',
-        'string'  => 'MAX_STRTING_LENGTH',
+        'string'  => 'MAX_STRING_LENGTH',
         'array'   => 'MAX_ARRAY_LENGTH',
     ],
     'mimes'                => 'INVALID_MIME',
@@ -75,7 +75,7 @@ return [
     'min' => [
         'numeric' => 'MIN_NUMERIC',
         'file'    => 'MIN_FILE_SIZE',
-        'string'  => 'MIN_STRTING_LENGTH',
+        'string'  => 'MIN_STRING_LENGTH',
         'array'   => 'MIN_ARRAY_LENGTH',
     ],
     'multiple_of'          => 'MULTPLE_OF',
