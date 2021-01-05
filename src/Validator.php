@@ -87,4 +87,15 @@ class Validator extends BaseValidator
         }
     }
 
+    protected function hasNotFailedPreviousRuleIfPresenceRule($rule, $attribute)
+    {
+        return in_array($rule, ['Unique', 'Exists']) ? ! $this->messagesHas($attribute) : true;
+    }
+
+    protected function messagesHas($key) {
+        $messages = $this->messages->messages();
+
+        return $messages[$key] ?? null;
+    }
+
 }
