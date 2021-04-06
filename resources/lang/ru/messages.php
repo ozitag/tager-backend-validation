@@ -2,14 +2,14 @@
 return [
     'accepted'             => 'Вы должны принять :attribute.',
     'active_url'           => 'Поле :attribute содержит недействительный URL.',
-    'after'                => 'В поле :attribute должна быть дата больше :date.',
-    'after_or_equal'       => 'В поле :attribute должна быть дата больше или равняться :date.',
+    'after'                => 'Дата должна быть больше :date.',
+    'after_or_equal'       => 'Дата больше или равняться :date.',
     'alpha'                => 'Поле :attribute может содержать только буквы.',
     'alpha_dash'           => 'Поле :attribute может содержать только буквы, цифры, дефис и нижнее подчеркивание.',
     'alpha_num'            => 'Поле :attribute может содержать только буквы и цифры.',
     'array'                => 'Поле :attribute должно быть массивом.',
-    'before'               => 'В поле :attribute должна быть дата раньше :date.',
-    'before_or_equal'      => 'В поле :attribute должна быть дата раньше или равняться :date.',
+    'before'               => 'Дата должна быть раньше :date.',
+    'before_or_equal'      => 'Дата должна быть раньше или равняться :date.',
     'between'              => [
         'numeric' => 'Поле :attribute должно быть между :min и :max.',
         'file'    => 'Размер файла в поле :attribute должен быть между :min и :max Килобайт(а).',
