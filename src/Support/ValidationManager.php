@@ -12,15 +12,18 @@ use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 
 class ValidationManager
 {
-    public function isMultiErrorsSupport() {
-        return (boolean) Config::get('tager-validation.multipleErrors');
+    public function isMultiErrorsSupport()
+    {
+        return (boolean)Config::get('tager-validation.multipleErrors');
     }
 
-    public function throw(string $fieldName, string $message = null, ?string $rule = null): void {
+    public function throw(?string $fieldName = null, string $message = null, ?string $rule = null): void
+    {
         throw new LiteValidationException($message, $fieldName, $rule);
     }
 
-    public function validate(array $data, array $rules, array $messages = [], bool $throw = true): bool|ValidatorContract {
+    public function validate(array $data, array $rules, array $messages = [], bool $throw = true): bool|ValidatorContract
+    {
         $validator = Validator::make($data, $rules, $messages);
 
         if ($validator->fails()) {
@@ -33,11 +36,13 @@ class ValidationManager
         return true;
     }
 
-    public function getCodePrefix(): ?string {
-        return (string) Config::get('tager-validation.codePrefix') ?? null;
+    public function getCodePrefix(): ?string
+    {
+        return (string)Config::get('tager-validation.codePrefix') ?? null;
     }
 
-    public function getCode(mixed $rule, ?string $param = null): string {
+    public function getCode(mixed $rule, ?string $param = null): string
+    {
         if (!$rule) {
             return $this->createFullCode('CUSTOM');
         }
@@ -52,7 +57,8 @@ class ValidationManager
 
     public function getFormattedMessage(
         ?string $fieldName = null, ?string $code = null, ?string $message = null
-    ): array {
+    ): array
+    {
         $formatJson = json_encode(Config::get('tager-validation.errorFormat'));
 
         $params = [
@@ -62,20 +68,22 @@ class ValidationManager
         ];
 
         $errorMessageJson = preg_replace_callback(
-            '/#(\w+)/', fn ($i) => count($i) === 2 ? ($params[$i[1]] ?? null) : null, $formatJson
+            '/#(\w+)/', fn($i) => count($i) === 2 ? ($params[$i[1]] ?? null) : null, $formatJson
         );
 
-        return (array) json_decode($errorMessageJson);
+        return (array)json_decode($errorMessageJson);
     }
 
-    protected function getCodeByCustomRule(mixed $rule): string {
+    protected function getCodeByCustomRule(mixed $rule): string
+    {
         if ($rule instanceof IRule) {
             return $this->createFullCode($rule->code());
         }
         return $this->createFullCode(strtoupper(substr(strrchr($rule::class, "\\"), 1)));
     }
 
-    protected function createFullCode(...$parts): string {
+    protected function createFullCode(...$parts): string
+    {
         return array_filter($parts)
             ? implode('_', [$this->getCodePrefix(), ...$parts])
             : implode('_', [$this->getCodePrefix(), 'NONE_CODE']);

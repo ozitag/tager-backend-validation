@@ -7,14 +7,17 @@ use OZiTAG\Tager\Backend\Validation\Facades\Validation;
 
 class LiteValidationException extends \Exception
 {
-    #[Pure]
     public function __construct(
         protected $fieldMessage,
-        protected $attribute,
+        protected ?string $attribute = null,
         protected ?string $rule = null,
         protected $code = 400,
     ) {
-        parent::__construct('The given data was invalid.');
+        if (empty($attribute)) {
+            parent::__construct($fieldMessage);
+        } else {
+            parent::__construct('The given data was invalid.');
+        }
     }
 
     /**
@@ -22,10 +25,19 @@ class LiteValidationException extends \Exception
      */
     public function getResponse()
     {
+        if (empty($this->attribute)) {
+            return response()->json([
+                'message' => $this->message,
+                'errors' => new \stdClass()
+            ], $this->code);
+        }
+
         $errors = Validation::getFormattedMessage(
             $this->attribute, Validation::getCode($this->rule), $this->fieldMessage,
         );
+
         $format = Validation::isMultiErrorsSupport() ? [$errors] : $errors;
+
         return response()->json([
             'message' => $this->message,
             'errors' => [
