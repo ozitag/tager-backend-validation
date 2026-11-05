@@ -17,7 +17,7 @@ class ValidationManager
         return (boolean)Config::get('tager-validation.multipleErrors');
     }
 
-    public function throw(?string $fieldName = null, string $message = null, ?string $rule = null): void
+    public function throw(?string $fieldName = null, ?string $message = null, ?string $rule = null): void
     {
         throw new LiteValidationException($message, $fieldName, $rule);
     }
